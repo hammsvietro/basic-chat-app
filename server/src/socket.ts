@@ -9,7 +9,7 @@ export default function socket(io: SocketIO.Server) {
       io.emit('message', data);
     });
     
-
+    
 
     socket.on('disconnect', (data) => {
       console.log('client disconnected');
