@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import crypto from 'crypto';
 import io from 'socket.io-client';
 import { MdSend } from 'react-icons/md'
@@ -19,6 +19,8 @@ interface IMessage {
 
 
 function App() {
+
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<IMessage[]>([]);
   const [message, setMessage] = useState<IMessage>({
     user: userId,
@@ -44,19 +46,36 @@ function App() {
       setMessage({...message, content: ''});
     }
   }
+
+  const scrollDown = () => {
+    if(scrollRef.current){
+
+      scrollRef.current.scrollTo({
+        behavior: "smooth",
+        top: scrollRef.current.offsetHeight
+      });
+    }
+  }
+
   
   useEffect(() => {
-  }, []);
+    
+    scrollDown();
+  }, [messages]);
 
   return (
     <div className="chat-page">
 
       <div className="chat">
-        <div className="messages">
+        <div ref={scrollRef} className="messages">
 
         {
           messages.map((message, index) => (
-            <h4 key={index}>{message.content}</h4>
+            <div className={message.user === userId ? 'mine' : 'foreign'} key={index}>
+              <strong>{message.user} says:</strong>
+              <br/>
+              <p>{message.content}</p>
+            </div>
             ))
           }
 
