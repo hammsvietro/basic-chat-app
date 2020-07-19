@@ -1,0 +1,49 @@
+.message {
+  display: flex;
+  flex-direction: column;
+  min-height: 20px;
+  width: 300px;
+  padding-left: 12px;
+  padding-right: 12px;
+  flex-shrink: 0;
+}
+
+.message p {
+  margin: 0;
+  padding: 6px 0;
+  display: block;
+  width: 300px;
+  word-wrap: break-word;
+  line-height: 22px;
+}
+
+.me {
+  align-self: flex-end;
+  margin-right: 30px;
+  background-color: var(--me);
+}
+
+.foreigner {
+  align-self: flex-start;
+  margin-left: 30px;
+  background-color: var(--foreigner);
+}
+
+.first {
+  
+  padding-top: 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.first span {
+  margin-top: 8px;
+}
+
+
+.last {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}

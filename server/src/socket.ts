@@ -10,7 +10,6 @@ export default function socket(io: SocketIO.Server) {
     });
     
     
-
     socket.on('disconnect', (data) => {
       console.log('client disconnected');
     });
